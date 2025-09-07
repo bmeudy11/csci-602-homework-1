@@ -76,9 +76,6 @@ public class HourlyEmployee extends Employee {
      */
     @Override
     public boolean equals(Object obj) {
-        //if the objects are the same return true
-        //if (this == obj) return true;
-
         //try to cast obj as an HourlyEmployee, then compare
         //each field to see if obj values are the same
         try {
