@@ -1,6 +1,7 @@
 package edu.citadel.hw1;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 
 //represents employee who is paid hourly
@@ -60,13 +61,35 @@ public class HourlyEmployee extends Employee {
 
     /**
      * Public methods `hashCode()`, overrides the hashCode method
-     * @param object to compare against
      * @return has code integer based on all fields
      */
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getHireDate(), wageRate, hoursWorked);
+    }
 
     /**
-     * Public methods `equals()`, overrides the equals method
+     * Public methods `equals()`, overrides the equals method and
+     * determines if two HourlyEmployee objects are the same
+     * @param obj object to compare
      * @return if objects are equal = true, else false
      */
+    @Override
+    public boolean equals(Object obj) {
+        //if the objects are the same return true
+        //if (this == obj) return true;
+
+        //try to cast obj as an HourlyEmployee, then compare
+        //each field to see if obj values are the same
+        try {
+            HourlyEmployee other = (HourlyEmployee) obj;
+
+            return Double.compare(other.wageRate, wageRate) == 0 &&
+                    Double.compare(other.hoursWorked, hoursWorked) == 0 &&
+                    Objects.equals(other.getName(), getName()) &&
+                    Objects.equals(other.getHireDate(), getHireDate());
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
