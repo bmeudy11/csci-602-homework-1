@@ -28,5 +28,16 @@ public abstract class Employee implements Comparable<Employee> {
         return hireDate;
     }
 
+    //calculate montly pay and return as double
+    public abstract double getMonthlyPay();
 
+    /**
+     * Method `compareTo()` as required by interface `Comparable`. This method should order employees based on
+     * their monthly salaries. So, for example, if the monthly salary for `emp1` is less than the monthly salary for
+     * `emp2`, then `emp1.compareTo(emp2)` should return a negative number.
+     */
+    @Override
+    public int compareTo(Employee otherEmployee) {
+        return Double.compare(this.getMonthlyPay(), otherEmployee.getMonthlyPay());
+    }
 }
